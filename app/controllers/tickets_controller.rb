@@ -1,14 +1,14 @@
 class TicketsController < ApplicationController
+    before_filter :authenticate_user!, except: [:index, :show]
     before_filter :find_project
     before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-
 
     def new
         @ticket = @project.tickets.build
     end
 
     def create
-        @ticket = @project.tickets.build(ticket_params)
+        @ticket = @project.tickets.build(ticket_params.merge!(:user => current_user))
         if @ticket.save
             flash[:notice] = "Ticket has been created."
             redirect_to [@project, @ticket]
@@ -25,12 +25,12 @@ class TicketsController < ApplicationController
     end
 
     def update
-        if @ticket.update_attributes(ticket_params)
+        if @ticket.update_attributes(ticket_params.merge!(:user => current_user))
             flash[:notice] = "Ticket has been updated."
             redirect_to [@project, @ticket]
         else
             flash[:alert] = "Ticket has not been updated."
-            render :action => "edit"
+            render action: "edit"
         end
     end
 
