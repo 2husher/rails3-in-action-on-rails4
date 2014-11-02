@@ -5,6 +5,10 @@ gem 'rails', '4.0.4'
 
 gem 'devise'
 gem 'cancan'
+gem 'paperclip'
+
+gem 'haml-rails'
+gem 'html2haml'
 
 gem 'mailcatcher'
 
@@ -31,6 +35,16 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+group :test, :development do
+    gem 'rspec-rails', '~> 2.5'
+end
+
+group :test do
+    gem 'cucumber-rails'
+    gem 'capybara'
+    gem 'database_cleaner'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
