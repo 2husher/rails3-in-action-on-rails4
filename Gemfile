@@ -37,13 +37,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 group :test, :development do
-    gem 'rspec-rails', '~> 2.5'
+    gem 'rspec-rails', '2.9.0'
 end
 
 group :test do
-    gem 'cucumber-rails'
-    gem 'capybara'
-    gem 'database_cleaner'
+    gem 'cucumber-rails', '1.0.6'
+    gem 'capybara', '1.1.2'
+    gem 'database_cleaner', '0.7.2'
+    gem 'factory_girl', '3.0.0'
 end
 
 group :doc do
