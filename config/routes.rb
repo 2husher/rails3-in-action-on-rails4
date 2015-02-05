@@ -1,6 +1,8 @@
 Ticketee::Application.routes.draw do
   root to: "projects#index"
-  
+
+  default_url_options host: "mysite.com"
+
   devise_for :users, controllers: { registrations: "registrations" }
   get '/awaiting_confirmation',
       to: "users#confirmation",
